@@ -1,0 +1,38 @@
+{
+    "name": "onion/onionlib",
+    "description": "Onion library util",
+    "type": "library",
+    "keywords": [
+    	"m3uzz",
+        "onion",
+        "library"
+    ],
+    "homepage": "http://onion.m3uzz.com/",
+    "license": "BSD-3-Clause",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "m3uzz/onionlib",
+                "version": "master",
+                "dist": {
+                    "url": "https://github.com/m3uzz/onionlib/archive/master.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/m3uzz/onionlib.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-0": {
+            "OnionLib": "/m3uzz/onionlib/src"
+        }  
+    }
+}
