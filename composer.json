@@ -1,24 +1,24 @@
 {
     "name": "m3uzz/onionlib",
     "description": "Onion library util",
-        "authors": [
+    "homepage": "http://onion.m3uzz.com/",
+    "license": "BSD-3-Clause",    
+    "authors": [
         {
             "name": "Humberto S Lourenco",
             "email": "betto@m3uzz.com"
         }
     ],
-    "type": "library",
     "keywords": [
     	"m3uzz",
         "onion",
         "library"
     ],
-    "homepage": "http://onion.m3uzz.com/",
-    "license": "BSD-3-Clause",
+    "type": "library",    
     "repositories": [
         {
-            "type": "package",
-            "package": {
+            "type": "library",
+            "library": {
                 "name": "m3uzz/onionlib",
                 "version": "master",
                 "dist": {
@@ -38,7 +38,7 @@
     },
     "autoload": {
         "psr-0": {
-            "OnionLib": "src/"
+            "OnionLib\\": "src/"
         }  
     }
 }
