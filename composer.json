@@ -1,6 +1,12 @@
 {
     "name": "onion/onionlib",
     "description": "Onion library util",
+        "authors": [
+        {
+            "name": "Humberto S Lourenco",
+            "email": "betto@m3uzz.com"
+        }
+    ],
     "type": "library",
     "keywords": [
     	"m3uzz",
@@ -32,7 +38,7 @@
     },
     "autoload": {
         "psr-0": {
-            "OnionLib": "/m3uzz/onionlib/src"
+            "OnionLib": "src/"
         }  
     }
 }
