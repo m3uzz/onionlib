@@ -43,11 +43,14 @@
  */
 
 namespace OnionLib;
-use OnionSrv\Config;
 
 class Password
 {
 	
+	/**
+	 * 
+	 * @return string
+	 */
 	public static function generateDynamicSalt ()
 	{
 		$lsDynamicSalt = '';
@@ -60,25 +63,22 @@ class Password
 		return $lsDynamicSalt;
 	}	
 
-	public static function encriptPassword ($psPassword, $psDynamicSalt)
+	
+	/**
+	 * 
+	 * @param string $psPassword
+	 * @param string $psDynamicSalt
+	 * @param string $psStaticSalt
+	 * @return string
+	 */
+	public static function encriptPassword ($psPassword, $psDynamicSalt, $psStaticSalt="aFGQ475SDsdfsaf2342")
 	{
-		$laOptions = Config::getOptions('settings');
-		
-		if (isset($laOptions['criptPassword']) && $laOptions['criptPassword'])
-		{
-			$lsStaticSalt = '';
-			
-			if (isset($laOptions['staticSalt']))
-			{
-				$lsStaticSalt = $laOptions['staticSalt'];
-			}
-			
-			$psPassword = md5($lsStaticSalt . $psPassword . $psDynamicSalt);
-		}
+		$psPassword = md5($lsStaticSalt . $psPassword . $psDynamicSalt);
 		
 		return $psPassword;
 	}
 
+	
 	/**
 	 * geraSenha: gera uma senha aleatória de 6 digitos, contendo numeros e
 	 * letras maiúsculas e minúsculas
@@ -110,10 +110,12 @@ class Password
 		
 		return $lsReturn;
 	}
+
 	
 	/**
-	 *
+	 * 
 	 * @param string $psStr
+	 * @param number $pnLen
 	 * @return string
 	 */
 	public static function tagGenerator ($psStr, $pnLen = 10)
