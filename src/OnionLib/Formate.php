@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of Onion Service
+ * This file is part of Onion Library
  *
  * Copyright (c) 2014-2016, Humberto Lourenço <betto@m3uzz.com>.
  * All rights reserved.
@@ -35,11 +35,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category   PHP
- * @package    Onion Service
+ * @package    OnionLib
  * @author     Humberto Lourenço <betto@m3uzz.com>
  * @copyright  2014-2016 Humberto Lourenço <betto@m3uzz.com>
  * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://github.com/m3uzz/onionsrv
+ * @link       http://github.com/m3uzz/onionlib
  */
 
 namespace OnionLib;

@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of Onion Service
+ * This file is part of Onion Library
  *
  * Copyright (c) 2014-2016, Humberto Lourenço <betto@m3uzz.com>.
  * All rights reserved.
@@ -35,11 +35,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category   PHP
- * @package    Onion Service
+ * @package    OnionLib
  * @author     Humberto Lourenço <betto@m3uzz.com>
  * @copyright  2014-2016 Humberto Lourenço <betto@m3uzz.com>
  * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://github.com/m3uzz/onionsrv
+ * @link       http://github.com/m3uzz/onionlib
  */
 
 namespace OnionLib;
@@ -70,6 +70,7 @@ class Text
 		return trim($lsString) . '...';
 	}
 
+	
 	/**
 	 * Retorna a string com o numero de caracteres desejados, mantendo as
 	 * palavras inteiras;
@@ -101,6 +102,7 @@ class Text
 		return trim($psText);
 	}
 
+	
 	/**
 	 * Trata string longa, quebrando em espaços e cortando de acordo com o
 	 * tamanho da linha
@@ -117,6 +119,7 @@ class Text
 		return self::cutString(self::lineBreak($psTexto, $pnLineSize), $pnLineSize * $pnRows);
 	}
 
+	
 	/**
 	 * Trata texto longo
 	 *
@@ -152,6 +155,7 @@ class Text
 		return $lsTexto;
 	}
 
+	
 	/**
 	 * Trata texto longo sem espaçamento
 	 *
@@ -185,6 +189,12 @@ class Text
 		return $psTexto;
 	}
 
+	
+	/**
+	 * 
+	 * @param string $psTexto
+	 * @return string
+	 */
 	public static function linksTexto ($psTexto)
 	{
 		if (empty($psTexto))

@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of Onion Service
+ * This file is part of Onion Library
  *
  * Copyright (c) 2014-2016, Humberto Lourenço <betto@m3uzz.com>.
  * All rights reserved.
@@ -35,11 +35,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category   PHP
- * @package    Onion Service
+ * @package    OnionLib
  * @author     Humberto Lourenço <betto@m3uzz.com>
  * @copyright  2014-2016 Humberto Lourenço <betto@m3uzz.com>
  * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://github.com/m3uzz/onionsrv
+ * @link       http://github.com/m3uzz/onionlib
  */
 
 namespace OnionLib;
@@ -47,6 +47,11 @@ namespace OnionLib;
 class String
 {
 	
+	/**
+	 * 
+	 * @param string $psString
+	 * @return string
+	 */
 	public static function clearStringToUrl ($psString)
 	{
 		$a = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ/,._!"\'@#$%&*()+=[]{}~ºª;:><|\\';
@@ -55,9 +60,16 @@ class String
 		$psString = strtr($psString, utf8_decode($a), $b);
 		$psString = trim($psString);
 		$psString = preg_replace('/\s\s*/', '-', $psString);
+		
 		return $psString = strtolower($psString);
 	}
 
+	
+	/**
+	 * 
+	 * @param string $a
+	 * @return string
+	 */
 	public static function cyrStrToLower ($a)
 	{
 		// Função não se enquadra no encode ISO-8859-1. Utilizar
@@ -73,6 +85,12 @@ class String
 		return strtr($a, $m);
 	}
 
+	
+	/**
+	 * 
+	 * @param string $psString
+	 * @return string
+	 */
 	public static function strToLowerIso8859_1 ($psString)
 	{
 		$lnLength = strlen($psString);
@@ -97,6 +115,12 @@ class String
 		return strtolower($psString);
 	}
 
+	
+	/**
+	 * 
+	 * @param string $psWord
+	 * @return string
+	 */
 	public static function clearSignals ($psWord)
 	{
 		$laReplace = array(
@@ -137,6 +161,12 @@ class String
 		return strtr($psWord, $laReplace);
 	}
 
+	
+	/**
+	 * 
+	 * @param string $psWord
+	 * @return string
+	 */
 	public static function removeAccentuation ($psWord)
 	{
 		$laReplace = array(
@@ -171,6 +201,7 @@ class String
 		return strtr($psWord, $laReplace);
 	}
 
+	
 	/**
 	 *
 	 * @param string $lsStr        	
@@ -215,6 +246,12 @@ class String
 		return $lsAux;
 	}
 
+	
+	/**
+	 * 
+	 * @param array $paDados
+	 * @return array
+	 */
 	public static function multArrayUtf8Decode ($paDados)
 	{
 		if (is_array($paDados))
@@ -240,11 +277,13 @@ class String
 		
 		return $paDados;
 	}
+	
 
 	/**
 	 * Tratamento de entrada de dados para o mysql
 	 *
-	 * @param string $psString        	
+	 * @param string $psString  
+	 * @return string      	
 	 */
 	public static function escapeString ($psString)
 	{
@@ -271,6 +310,11 @@ class String
 	}
 
 
+	/**
+	 * 
+	 * @param string $psString
+	 * @return string
+	 */
 	public static function unHtmlEntities ($psString)
 	{
 		// replace numeric entities
@@ -282,5 +326,84 @@ class String
 		$laTransTbl = array_flip($laTransTbl);
 		
 		return strtr($psString, $laTransTbl);
+	}
+	
+	
+	/**
+	 *
+	 * @param string $psStr
+	 * @param number $pnLen
+	 * @return string
+	 */
+	public static function tagGenerator ($psStr, $pnLen = 10)
+	{
+		$laReplace = array(
+			"\"" => "",
+			"'" => "",
+			"\$" => "",
+			"\\" => "",
+			"/" => "",
+			"#" => "",
+			"!" => "",
+			"%" => "",
+			"&" => "",
+			"*" => "",
+			"(" => "",
+			")" => "",
+			"_" => "",
+			"=" => "",
+			"`" => "",
+			"~" => "",
+			"[" => "",
+			"]" => "",
+			"{" => "",
+			"}" => "",
+			"^" => "",
+			"<" => "",
+			">" => "",
+			"," => "",
+			"." => "",
+			";" => "",
+			":" => "",
+			"?" => "",
+			"|" => "",
+			"@" => "",
+			" +" => " ",
+			" -" => " "
+		);
+	
+		//$psStr = self::unHtmlEntities($psStr);
+		$psStr = strtr($psStr, $laReplace);
+		$psStr = substr($psStr, "0", $pnLen);
+		$psStr = self::removeAccentuation($psStr);
+		$psStr = trim($psStr);
+	
+		$psStr = preg_replace(array(
+			"/[\s]+/"
+		), array(
+			" "
+		), $psStr);
+	
+		
+		$psStr = strtoupper(str_replace(' ', '-', $psStr));
+	
+		return $psStr;
+	}
+	
+	
+	/**
+	 * 
+	 * @param string $psText
+	 * @return number
+	 */
+	public static function slugfy ($psText)
+	{
+		$psText = self::removeAccentuation($psText);
+		$psText = preg_replace("/[^A-Za-z]/", "", $psText);
+		$psText = preg_replace("/([A-Z])/", " $1", $psText);
+		$psText = preg_replace("/\s\s/", " ", $psText);
+		$psText = preg_replace("/\s/", "-", trim($psText));
+		
+		return strtolower($psText);
 	}
 }

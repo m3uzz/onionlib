@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of Onion Service
+ * This file is part of Onion Library
  *
  * Copyright (c) 2014-2016, Humberto Lourenço <betto@m3uzz.com>.
  * All rights reserved.
@@ -35,11 +35,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category   PHP
- * @package    Onion Service
+ * @package    OnionLib
  * @author     Humberto Lourenço <betto@m3uzz.com>
  * @copyright  2014-2016 Humberto Lourenço <betto@m3uzz.com>
  * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://github.com/m3uzz/onionsrv
+ * @link       http://github.com/m3uzz/onionlib
  */
 
 namespace OnionLib;
@@ -61,6 +61,7 @@ class Util
 		$psSubject = preg_replace($lsP, $psReplace, $psSubject);
 	}
 
+	
 	/**
 	 *
 	 * @param string $psCookie_name        	
@@ -72,6 +73,7 @@ class Util
 		setcookie("$psCookie_name", "$psCookie_value", "$pnTempo", "$SCRIPT_FILENAME", "$HTTP_HOST");
 	}
 
+	
 	/**
 	 *
 	 * @return number
@@ -82,6 +84,7 @@ class Util
 		return ((float) $lnUsec + (float) $lnSec);
 	}
 
+	
 	/**
 	 * Setar data no formato para inserção no BD
 	 *
@@ -93,6 +96,7 @@ class Util
 		return $lsData;
 	}
 
+	
 	/**
 	 * Verifica se o valor de uma variável é true ou false e retorna booleano
 	 *
