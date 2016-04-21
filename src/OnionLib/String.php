@@ -392,6 +392,31 @@ class String
 	
 	
 	/**
+	 *
+	 * @param string $psString
+	 * @return string
+	 */
+	public static function lcfirst ($psString)
+	{
+		$lsString = String::slugfy($psString);
+		$laArray = explode("-", $lsString);
+	
+		if (is_array($laArray))
+		{
+			$lsString = $laArray[0];
+			unset($laArray[0]);
+				
+			foreach($laArray as $lsValue)
+			{
+				$lsString .= ucfirst($lsValue);
+			}
+		}
+	
+		return $lsString;
+	}
+	
+	
+	/**
 	 * 
 	 * @param string $psText
 	 * @return number
